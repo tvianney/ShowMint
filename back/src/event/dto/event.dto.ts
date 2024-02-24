@@ -1,23 +1,23 @@
-import {IsBoolean, IsEmail, IsNotEmpty} from 'class-validator';
+import { IsBoolean, IsNotEmpty } from 'class-validator';
 
 export class EventDto {
-    @IsNotEmpty()
-    nbPlaces: number
+  @IsNotEmpty()
+  nbPlaces: number;
 
-    @IsNotEmpty()
-    imgUrl: string
+  @IsNotEmpty()
+  imgUrl: string;
 
-    @IsNotEmpty()
-    artistName: string
+  @IsNotEmpty()
+  artistName: string;
 
-    description: string
+  description: string;
 
-    @IsNotEmpty()
-    structureId: string
+  @IsNotEmpty()
+  structureId: string;
 
-    @IsBoolean()
-    isTransferable: boolean
+  @IsBoolean()
+  isTransferable: boolean;
 
-    @IsBoolean()
-    isRefundable: boolean
+  @IsBoolean()
+  isRefundable: boolean;
 }

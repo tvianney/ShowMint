@@ -1,19 +1,17 @@
-import {IsBoolean, IsNotEmpty} from "class-validator";
-
 export class Event {
-    adress: string
+  adress: string;
 
-    nbPlaces: number
+  nbPlaces: number;
 
-    imgUrl: string
+  imgUrl: string;
 
-    artistName: string
+  artistName: string;
 
-    description: string
+  description: string;
 
-    structureId: string
+  structureId: string;
 
-    isTransferable: boolean
+  isTransferable: boolean;
 
-    isRefundable: boolean
+  isRefundable: boolean;
 }
