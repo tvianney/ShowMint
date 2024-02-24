@@ -8,12 +8,12 @@ export class EventDto {
   imgUrl: string;
 
   @IsNotEmpty()
-  artistName: string;
+  metadataName: string;
 
-  description: string;
+  metadataDescription: string;
 
   @IsNotEmpty()
-  structureId: string;
+  eventId: string;
 
   @IsBoolean()
   isTransferable: boolean;

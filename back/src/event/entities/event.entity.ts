@@ -1,17 +1,23 @@
-export class Event {
-  adress: string;
+// export class Event {
+//   adress: string;
 
-  nbPlaces: number;
+//   nbPlaces: number;
 
-  imgUrl: string;
+//   imgUrl: string;
 
-  artistName: string;
+//   artistName: string;
 
+//   description: string;
+
+//   structureId: string;
+
+//   isTransferable: boolean;
+
+//   isRefundable: boolean;
+// }
+
+export class IPFSMetadata {
+  image: string;
+  name: string;
   description: string;
-
-  structureId: string;
-
-  isTransferable: boolean;
-
-  isRefundable: boolean;
 }
