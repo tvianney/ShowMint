@@ -16,12 +16,20 @@ contract TicketTest is Test {
             "JUL24",
             uint64(INITIAL_SUPPLY),
             true,
-            true
+            true,
+            "Qmtoto/"
         );
     }
 
     function createNonTransferableContract() private {
-        ticket = new Ticket("JUL Tour 2024", "JUL24", uint64(1), false, false);
+        ticket = new Ticket(
+            "JUL Tour 2024",
+            "JUL24",
+            uint64(1),
+            false,
+            false,
+            "Qmtoto/"
+        );
     }
 
     function testCreation() public {
@@ -103,5 +111,14 @@ contract TicketTest is Test {
             bytes("ERC721: transfer is not allowed for this ticket")
         );
         ticket.safeTransferFrom(WALLET, address(this), 0);
+    }
+
+    function testTokenURI() public {
+        testMint();
+        assertEq(
+            ticket.tokenURI(0),
+            "Qmtoto/0",
+            "tokenURI should return the baseURI + tokenId"
+        );
     }
 }
