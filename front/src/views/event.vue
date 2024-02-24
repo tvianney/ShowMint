@@ -2,15 +2,15 @@
     <div id="body" style="margin: 100px 0; background-color: #DDC9D7; display: flex; justify-content:center">
         <div id="left-side" class="main-box" style="display: flex; flex-direction: column;">
             <span class="my-4">Concert Afropop, Afrobeats, Zouk</span>
-            <span class="text-xl font-bold my-4">TANYA ST-VAL</span>
+            <span class="my-4 font-gothic text-8xl">TANYA ST-VAL</span>
             <span class="my-4 font-bold">sam. 24 févr. 2024 19:30</span>
             <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">Réserver votre billet</button>
             <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-gray-950 text-white bg-white hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">INSTAGRAM</button>
-            <div>
-                <img src="../assets/artiste-tanya.jpg" class="w-10 rounded-full" alt="Artiste">
+            <div style="display: flex; align-items: center;">
+                <img src="../assets/artiste-tanya.jpg" style="margin-right: 25px;" class="h-20 rounded-full" alt="Artiste">
                 <div>
                     <span>Artiste</span>
-                    <span style="display: block;">Tanya St-Val</span>
+                    <span style="display: block;" class="font-gothic text-xl">Tanya St-Val</span>
                 </div>
             </div>
         </div>
