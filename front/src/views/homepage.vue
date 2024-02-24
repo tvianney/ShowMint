@@ -5,7 +5,7 @@
 
     <Carousel/>
 
-    <div class="pt-[80px] px-[200px] pb-[40px]">
+    <div class="pt-[80px] px-[200px] pb-[40px] mb-40">
         <div class="flex justify-items-center">
             <!-- <div class="-rotate-90 text-5xl text-nowrap">A L'AFFICHE</div> -->
             <div class="h-[450px] w-[350px] mr-12"> <img class="object-cover h-full hover:scale-110 transition duration-1000" src="../assets/tanya.jpg" alt="">
