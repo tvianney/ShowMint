@@ -4,8 +4,8 @@
             <span class="my-4">Concert Afropop, Afrobeats, Zouk</span>
             <span class="text-xl font-bold my-4">TANYA ST-VAL</span>
             <span class="my-4 font-bold">sam. 24 févr. 2024 19:30</span>
-            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Réserver votre billet</button>
-            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-gray-950 text-white bg-white hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">INSTAGRAM</button>
+            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">Réserver votre billet</button>
+            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-gray-950 text-white bg-white hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">INSTAGRAM</button>
             <div>
                 <img src="../assets/artiste-tanya.jpg" class="w-10 rounded-full" alt="Artiste">
                 <div>

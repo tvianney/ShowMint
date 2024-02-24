@@ -3,6 +3,7 @@ import Home from '../views/homepage.vue'
 
 const routes = [
     { path: '/', name: 'Home', component: Home },
+    { path: '/event', name: 'Event', component: ()=> import(/* webpackChunckName: "booking" */"../views/event.vue") },
 ]
 
 const routers = createRouter({

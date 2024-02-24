@@ -1,7 +1,7 @@
 <template>
   <div v-for="(slide, index) in slides" :key="index" :class="{ 'hidden': index !== activeIndex, 'block': index === activeIndex }" class="flex flex-row h-[560px] cursor-default">
       <div class="w-3/5">
-          <img class="object-none h-full" src="/home/vianney/POC/Aleph/ShowMint/front/src/assets/dog-1.jpg" :alt="slide.artist">
+          <img class="object-none h-full" src="../assets/dog-1.jpg" :alt="slide.artist">
       </div>
         <div class="w-1/2" :class="slide.backgroundColor">
             <div class="m-12">
