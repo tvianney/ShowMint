@@ -51,8 +51,4 @@
   .ul.my-list li {
     margin: 0 2%;
   }
-  .font-cigale {
-    font-family: Arimo;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap')
 </style>
