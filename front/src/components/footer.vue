@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: black;" class="mt-40">
+  <div style="background-color: black;">
     <div style="display: flex; justify-content: space-between;">
       <div style="display: flex; align-items: center;">
         <a href="" class="flex items-center space-x-3 rtl:space-x-reverse mx-10">
