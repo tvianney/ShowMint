@@ -2,7 +2,7 @@
     <nav class="bg-white ">
       <div style="display: flex; justify-content: flex-end;" class="max-w-screen-3xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://flowbite.com/" style="position: absolute; left: 2%;" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="../assets/La-Cigale_logo_color_red-300x108.jpg" class="h-14" alt="Flowbite Logo">
+          <RouterLink to="/"> <img src="../assets/La-Cigale_logo_color_red-300x108.jpg" class="h-14" alt="Flowbite Logo"> </RouterLink>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button type="button" style="min-width: 45px; min-height: 45px; justify-content: center" class="flex items-center border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm text-center">
