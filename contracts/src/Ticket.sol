@@ -9,17 +9,24 @@ contract Ticket is ERC721, Ownable {
     uint64 public supply;
     bool public isTransferable;
     bool public isRefundable;
+    string private __baseURI;
 
     constructor(
         string memory name_,
         string memory symbol_,
         uint64 totalSupply_,
         bool isTransferable_,
-        bool isRefundable_
+        bool isRefundable_,
+        string memory baseURI_
     ) ERC721(name_, symbol_) Ownable(msg.sender) {
         totalSupply = totalSupply_;
         isTransferable = isTransferable_;
         isRefundable = isRefundable_;
+        __baseURI = baseURI_;
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return __baseURI;
     }
 
     function mint(address to) public onlyOwner {
