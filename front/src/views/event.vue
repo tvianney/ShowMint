@@ -4,7 +4,7 @@
             <span class="my-4">Concert Afropop, Afrobeats, Zouk</span>
             <span class="my-4 font-gothic text-8xl">TANYA ST-VAL</span>
             <span class="my-4 font-bold">sam. 24 févr. 2024 19:30</span>
-            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">Réserver votre billet</button>
+            <button @click="displayModal" style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">Réserver votre billet</button>
             <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-gray-950 text-white bg-white hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center ">INSTAGRAM</button>
             <div style="display: flex; align-items: center;">
                 <img src="../assets/artiste-tanya.jpg" style="margin-right: 25px;" class="h-20 rounded-full" alt="Artiste">
@@ -44,7 +44,35 @@ Plus qu'un concert live, il s'agira d'un véritable spectacle avec un décor et 
 Venez redécouvrir ses tubes mémorables , intemporels et une Tanya comme vous ne l'avez jamais vu lors de son spectacle « Tanya St-Val Forever »</span>
         </div>
     </div>
+    <Modal v-if="modalDialog" @closeModal="handleActions"/>
 </template>
+
+<script>
+import Modal from '../components/paymentModal.vue'
+export default {
+    components: {
+        Modal,
+    },
+    data() {
+        return {
+            modalDialog: false,
+        }
+    },
+    methods: {
+    handleActions(actions) {
+      for (const action of actions)
+        if (action === 'closeModal') {
+          this.modalDialog = false;
+        } //else if (action === 'reloadPage') {
+        //   location.reload();
+        // }
+    },
+    displayModal() {
+        this.modalDialog = true;
+    }
+    },
+};
+</script>
 
 <style>
   .box-info {
