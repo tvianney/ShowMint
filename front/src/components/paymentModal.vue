@@ -100,7 +100,7 @@ export default {
     },
     getTicket() {
       const eventData = {
-        email: "pierre@gmail.com",
+        email: "martin@gmail.com",
         eventId: "arena:555",
       };
       axios

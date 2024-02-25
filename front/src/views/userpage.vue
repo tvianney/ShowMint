@@ -89,7 +89,7 @@ export default {
   mounted() {
     console.time("Loading Users");
     axios
-      .get("http://localhost:3001/ticket/pierre@gmail.com")
+      .get("http://localhost:3001/ticket/martin@gmail.com")
       .then((res) => (this.users = res.data))
       .finally(() => console.timeEnd("Loading Users"));
   },
