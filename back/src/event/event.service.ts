@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { EventDto } from './dto/event.dto';
-import { IPFSMetadata } from './entities/event.entity';
+import { IPFSMetadata, Result } from './entities/event.entity';
 import { promises as fs } from 'fs';
 import { store } from 'aleph-sdk-ts/dist/messages';
 import {
@@ -116,12 +116,13 @@ export class EventService {
     });
   }
 
-  async create(createEventDto: EventDto) {
+  async create(createEventDto: EventDto): Promise<Result> {
     this.createMetadatas(createEventDto);
     const cid = await this.publishMetadataOnIPFS(createEventDto.nbPlaces);
     this.pinOnAleph(cid);
     const contractAddress = await this.deployContract(createEventDto, cid);
     await this.aggregateOnAleph(createEventDto.eventId, contractAddress);
     console.log('Contract Deployed:', contractAddress);
+    return { message: 'The event was created succesfully' };
   }
 }

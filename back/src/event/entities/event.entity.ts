@@ -3,3 +3,7 @@ export class IPFSMetadata {
   name: string;
   description: string;
 }
+
+export class Result {
+  message: string;
+}
