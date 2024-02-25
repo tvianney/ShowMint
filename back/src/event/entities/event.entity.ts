@@ -6,4 +6,5 @@ export class IPFSMetadata {
 
 export class Result {
   message: string;
+  contractAddress: string;
 }

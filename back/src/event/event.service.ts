@@ -123,6 +123,9 @@ export class EventService {
     const contractAddress = await this.deployContract(createEventDto, cid);
     await this.aggregateOnAleph(createEventDto.eventId, contractAddress);
     console.log('Contract Deployed:', contractAddress);
-    return { message: 'The event was created succesfully' };
+    return {
+      message: 'The event was created succesfully',
+      contractAddress: contractAddress,
+    };
   }
 }
