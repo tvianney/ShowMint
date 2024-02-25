@@ -1,7 +1,7 @@
 <template>
   <div v-for="(slide, index) in slides" :key="index" :class="{ 'hidden': index !== activeIndex, 'block': index === activeIndex }" class="flex flex-row h-[560px] cursor-default">
       <div class="w-3/5">
-          <img class="object-none h-full" src="../assets/dog-1.jpg" :alt="slide.artist">
+          <img class="object-none h-full" :src="slide.image" :alt="slide.artist">
       </div>
         <div class="w-1/2" :class="slide.backgroundColor">
             <div class="m-12">
@@ -26,19 +26,19 @@ export default {
       activeIndex: 0,
       slides: [
         {
-          image: "/home/vianney/POC/Aleph/ShowMint/front/src/assets/dog-1.jpg",
+          image: '/dog-1.jpg',
           date: 'DIM. 2 JUIN | 20:00',
           artist: 'DOGSTAR',
           backgroundColor: 'bg-dogstar'
         },
         {
-          image: '/assets/alice.jpg',
+          image: '/alice.jpg',
           date: 'VEN. 8 MARS | 20:00',
           artist: 'ALICE',
           backgroundColor: 'bg-alice'
         },
         {
-          image: '/assets/doug.jpg',
+          image: '/doug.jpg',
           date: 'JEU. 23 MAI | 20:00',
           artist: 'THE DOUG',
           backgroundColor: 'bg-doug'
