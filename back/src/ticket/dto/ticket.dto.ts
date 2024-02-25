@@ -8,15 +8,3 @@ export class TicketDto {
   @IsNotEmpty()
   eventId: string;
 }
-
-export class DeleteTicketDto {
-  @IsNotEmpty()
-  @IsEmail()
-  email: string;
-
-  @IsNotEmpty()
-  event: string;
-
-  @IsNotEmpty()
-  nbPlaces: number;
-}
