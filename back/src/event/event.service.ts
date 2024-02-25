@@ -26,12 +26,9 @@ export class EventService {
   accountViem: import('viem').PrivateKeyAccount;
 
   constructor() {
-    // TODO faire .env
-    this.accountAleph = ImportAccountFromPrivateKey(
-      '0xb29dcdfd5b8e3bdf23d74227c72d4bc4c4b872266ea1bba6baecefb1f867c138',
-    );
+    this.accountAleph = ImportAccountFromPrivateKey(process.env.PRIVATE_KEY);
     this.accountViem = privateKeyToAccount(
-      '0xb29dcdfd5b8e3bdf23d74227c72d4bc4c4b872266ea1bba6baecefb1f867c138',
+      process.env.PRIVATE_KEY as `0x${string}`,
     );
     this.publicClient = createPublicClient({
       chain: sepolia,
