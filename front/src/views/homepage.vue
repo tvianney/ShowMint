@@ -1,13 +1,12 @@
 <template>
     <div>
-        <img class="h-60 w-full px-96 py-10" src="../assets/la-cigale_logo_red.svg" alt="">
+        <img class="h-72 w-full px-96 py-10" src="../assets/la-cigale_logo_red.svg" alt="">
     </div>
 
     <Carousel/>
 
-    <div class="pt-[80px] px-[200px] pb-[40px] mb-40">
+    <div class="pt-[80px] px-[200px] pb-[40px] 0">
         <div class="flex justify-items-center h-[670px]">
-            <!-- <div class="-rotate-90 text-5xl text-nowrap">A L'AFFICHE</div> -->
             <div class="h-[450px] w-[350px] mr-12"> <RouterLink to="/event"> <img class="object-cover h-full hover:scale-110 transition duration-1000" src="../assets/tanya.jpg" alt=""> </RouterLink>
                 <p class="text-sm text-center mt-8">CONCERT | AFROPOP</p>
                 <p class="text-semibold text-5xl font-gothic text-center mt-2">TANYA ST-VAL</p>
