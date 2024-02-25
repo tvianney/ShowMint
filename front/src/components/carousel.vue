@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    setInterval(this.nextSlide, 7000);
+    setInterval(this.nextSlide, 5000);
   },
   methods: {
     nextSlide() {
