@@ -62,9 +62,6 @@
         <img class="w-screen" src="../assets/la-cigale_salle.jpg" alt="">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-nowrap text-white text-7xl font-gothic">
             <p>UNE SALLE DE CONCERT MYTHIQUE</p>
-            <div class="h-14 w-64 bg-black relative text-white hover:bg-white hover:text-black cursor-pointer">
-                <p></p>
-            </div>
         </div>
         <div></div>
     </div>
