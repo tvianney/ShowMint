@@ -13,6 +13,7 @@ import { createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { sepolia } from 'viem/chains';
 import { ticketContract } from '../abi/Ticket';
+import { Event } from 'src/event/entities/event.entity';
 
 @Injectable()
 export class TicketService {
@@ -36,13 +37,13 @@ export class TicketService {
   }
 
   async findUser(email: string): Promise<string> {
-    const user = (await getAggregate({
+    const data = (await getAggregate({
       key: email,
       address: this.accountAleph.address,
       APIServer: 'https://api2.aleph.im',
-    })) as User | null;
+    })) as User[];
 
-    if (!user) {
+    if (!data[email]) {
       const address = NewAccount().account.address;
       await publishAggregate({
         account: this.accountAleph,
@@ -52,8 +53,16 @@ export class TicketService {
       });
       return address;
     } else {
-      return user.publicAddress;
+      return data[email].publicKey;
     }
+  }
+
+  async getContractAddress(eventId: string): Promise<string> {
+    const data = (await getAggregate({
+      address: this.accountAleph.address,
+      APIServer: 'https://api2.aleph.im',
+    })) as Event[];
+    return data[eventId].contractAddress;
   }
 
   async mintTicket(userAddress: string, contractAddress: `0x${string}`) {
@@ -69,9 +78,13 @@ export class TicketService {
 
   async create(createTicketDto: TicketDto): Promise<Result> {
     const userAddress = await this.findUser(createTicketDto.email);
-    // const contractAddress;
-    this.mintTicket(userAddress, '0x1234567890');
+    const contractAddress = await this.getContractAddress(
+      createTicketDto.eventId,
+    );
+    this.mintTicket(userAddress, contractAddress as `0x${string}`);
 
     return { message: 'The ticket was created succesfully' };
   }
 }
+
+// 0x9808c1e30dfaaf9686d39d631e2a91313f31a373;
