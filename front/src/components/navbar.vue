@@ -1,7 +1,7 @@
 <template>
     <nav class="bg-white ">
       <div style="display: flex; justify-content: flex-end;" class="max-w-screen-3xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" style="position: absolute; left: 2%;" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" style="position: absolute; left: 2%;" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="../assets/La-Cigale_logo_color_red-300x108.jpg" class="h-14" alt="Flowbite Logo">
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -18,7 +18,9 @@
             </button>
         </div>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button style="min-height: 45px;" type="button" class="mx-4 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-sm px-4 py-2 text-center">Espace Pro</button>
+            <a href="/user">
+              <img src="../assets/nyan-cat.webp" class="h-12 ml-4 rounded-full">
+            </a>
             <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-sticky" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
