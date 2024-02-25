@@ -23,7 +23,7 @@
                         <label class="block text-gray-700 font-bold mb-2" for="cvv">Cardholder Name</label>
                         <input class="appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Full Name">
                     </div>
-                    <button @click="payNow" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Pay Now</button>
+                    <button @click="payNow(); getTicket();" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">Pay Now</button>
                 </div>
             </div>
             <div class="flex justify-center items-center h-full" v-else>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   emits: ['closeModal'],
   data() {
@@ -53,6 +55,19 @@ export default {
         this.closeModal();
       }, 3000);
     },
+    getTicket() {
+      const eventData = {
+        email: 'rezaclient@gmail.com',
+        eventId: 'arena:555',
+      };
+      axios.post("http://localhost:3001/ticket", eventData)
+      .then(response => {
+        console.log("Ticket created successfully", response.data);
+      })
+      .catch(error => {
+        console.error("Error creating the ticket", error);
+      });
+    }
   },
 };
 </script>
