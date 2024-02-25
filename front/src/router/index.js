@@ -5,6 +5,7 @@ const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/event', name: 'Event', component: ()=> import(/* webpackChunckName: "booking" */"../views/event.vue") },
     { path: '/user', name: 'User', component: ()=> import(/* webpackChunckName: "booking" */"../views/userpage.vue") },
+    { path: '/backoffice', name: 'Backoffice', component: ()=> import(/* webpackChunckName: "booking" */"../views/backoffice.vue") },
 ]
 
 const routers = createRouter({
