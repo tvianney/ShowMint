@@ -1,7 +1,7 @@
 import { Ticket } from './ticket.entity';
 
 export class User {
-  publicAddress: string;
-  privateAddress: string;
+  publicKey: string;
+  privateKey: string;
   tickets: Ticket[];
 }

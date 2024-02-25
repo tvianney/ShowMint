@@ -1,3 +1,7 @@
+export class Event {
+  contractAddress: string;
+}
+
 export class IPFSMetadata {
   image: string;
   name: string;
