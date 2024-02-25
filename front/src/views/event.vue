@@ -4,7 +4,7 @@
             <span class="my-4">Concert Afropop, Afrobeats, Zouk</span>
             <span class="font-gothic text-8xl">TANYA ST-VAL</span>
             <span class="font-bold">sam. 24 févr. 2024 19:30</span>
-            <button @click="displayModal" style="min-height: 45px;" type="button" class="w-fit mt-8 border border-black hover:text-gray-950 text-white bg-gray-950 hover:bg-white focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-base px-8 py-4 text-center ">Réserver votre billet</button>
+            <button @click="handleActions(['displayModal', 'createPost'])" style="min-height: 45px;" type="button" class="w-fit mt-8 border border-black hover:text-gray-950 text-white bg-gray-950 hover:bg-white focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-base px-8 py-4 text-center ">Réserver votre billet</button>
             <a href="https://www.instagram.com/tanyastval.officiel/?hl=fr">
                 <button style="min-height: 45px;" type="button" class="w-fit mt-2 mb-8 border border-black hover:text-white text-gray-950 bg-transparent hover:bg-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-950 font-medium text-base px-8 py-4 text-center ">INSTAGRAM</button>
             </a>
@@ -55,6 +55,8 @@
 
 <script>
 import Modal from '../components/paymentModal.vue'
+import axios from "axios";
+   nisftrf
 export default {
     components: {
         Modal,
@@ -69,13 +71,28 @@ export default {
       for (const action of actions)
         if (action === 'closeModal') {
           this.modalDialog = false;
-        } //else if (action === 'reloadPage') {
+        } else if (action == 'createPost') {
+          this.createPost();
+        } else if (action == 'displayModal') {
+          this.displayModal();
+        } 
+        //else if (action === 'reloadPage') {
         //   location.reload();
         // }
     },
     displayModal() {
         this.modalDialog = true;
-    }
+    },
+    async createPost() {
+      const formData = new FormData();
+      formData.append("alexandre.timal@gmail.com", "arena:555");
+      const { data } = await axios.post("http://localhost:3001/ticket", formData);
+      this.response = data;
+    },
+    beforeMount() {
+        this.createPost();
+    },
+
     },
 };
 </script>
