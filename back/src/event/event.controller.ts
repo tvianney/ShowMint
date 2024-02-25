@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Delete } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { EventService } from './event.service';
 import { EventDto } from './dto/event.dto';
 
@@ -9,10 +9,5 @@ export class EventController {
   @Post()
   create(@Body() eventData: EventDto) {
     return this.eventService.create(eventData);
-  }
-
-  @Delete()
-  remove(@Body('eventId') id: string) {
-    return this.eventService.remove(id);
   }
 }

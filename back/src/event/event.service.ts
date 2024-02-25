@@ -3,28 +3,43 @@ import { EventDto } from './dto/event.dto';
 import { IPFSMetadata } from './entities/event.entity';
 import { promises as fs } from 'fs';
 import { store } from 'aleph-sdk-ts/dist/messages';
-import { ImportAccountFromPrivateKey } from 'aleph-sdk-ts/dist/accounts/ethereum';
+import {
+  ETHAccount,
+  ImportAccountFromPrivateKey,
+} from 'aleph-sdk-ts/dist/accounts/ethereum';
 import { ItemType } from 'aleph-sdk-ts/dist/messages/types';
 import { promisify } from 'util';
 import { exec as execCallback } from 'child_process';
-import { createWalletClient, http } from 'viem';
-import { polygonMumbai } from 'viem/chains';
+import { createPublicClient, createWalletClient, http } from 'viem';
+import { sepolia } from 'viem/chains';
 import { privateKeyToAccount } from 'viem/accounts';
+import { ticketContract } from '../abi/Ticket';
+import { Publish as publishAggregate } from 'aleph-sdk-ts/dist/messages/aggregate';
 
 const exec = promisify(execCallback);
 
 @Injectable()
 export class EventService {
+  publicClient: import('viem').PublicClient;
   walletClient: import('viem').WalletClient;
-  account: import('viem').PrivateKeyAccount;
+  accountAleph: ETHAccount;
+  accountViem: import('viem').PrivateKeyAccount;
 
   constructor() {
-    this.account = privateKeyToAccount(
+    // TODO faire .env
+    this.accountAleph = ImportAccountFromPrivateKey(
       '0xb29dcdfd5b8e3bdf23d74227c72d4bc4c4b872266ea1bba6baecefb1f867c138',
     );
+    this.accountViem = privateKeyToAccount(
+      '0xb29dcdfd5b8e3bdf23d74227c72d4bc4c4b872266ea1bba6baecefb1f867c138',
+    );
+    this.publicClient = createPublicClient({
+      chain: sepolia,
+      transport: http(),
+    }) as any;
     this.walletClient = createWalletClient({
-      account: this.account,
-      chain: polygonMumbai,
+      account: this.accountViem,
+      chain: sepolia,
       transport: http(),
     });
   }
@@ -61,13 +76,8 @@ export class EventService {
 
   async pinOnAleph(cid: string) {
     try {
-      // TODO mettre dans .env
-      const account = await ImportAccountFromPrivateKey(
-        'b29dcdfd5b8e3bdf23d74227c72d4bc4c4b872266ea1bba6baecefb1f867c138',
-      );
-
       await store.Publish({
-        account: account,
+        account: this.accountAleph,
         channel: 'ShowMint',
         fileHash: cid,
         storageEngine: ItemType.ipfs,
@@ -78,24 +88,40 @@ export class EventService {
     }
   }
 
-  async deployContract(createEventDto: EventDto) {
+  async deployContract(createEventDto: EventDto, cid: string): Promise<string> {
     const hash = await this.walletClient.deployContract({
-      abi,
-      account: this.account.publicKey,
-      args: [69420],
-      bytecode: '0x608060405260405161083e38038061083e833981016040819052610...',
+      abi: ticketContract.abi,
+      account: this.accountViem,
+      args: [
+        createEventDto.metadataName,
+        createEventDto.metadataDescription.slice(0, 3),
+        createEventDto.nbPlaces,
+        createEventDto.isTransferable,
+        createEventDto.isRefundable,
+        'ipfs://' + cid + '/',
+      ] as any[],
+      bytecode: ticketContract.bytecode.object as `0x${string}`,
+      chain: sepolia,
     });
-    console.log(hash);
+    const receipt = await this.publicClient.waitForTransactionReceipt({ hash });
+    return receipt.contractAddress;
+  }
+
+  async aggregateOnAleph(eventId: string, contractAddress: string) {
+    await publishAggregate({
+      account: this.accountAleph,
+      key: eventId,
+      content: { contractAddress },
+      channel: 'ShowMint',
+    });
   }
 
   async create(createEventDto: EventDto) {
     this.createMetadatas(createEventDto);
     const cid = await this.publishMetadataOnIPFS(createEventDto.nbPlaces);
     this.pinOnAleph(cid);
-    await this.deployContract(createEventDto);
-  }
-
-  remove(id: string) {
-    return `This action removes a event`;
+    const contractAddress = await this.deployContract(createEventDto, cid);
+    await this.aggregateOnAleph(createEventDto.eventId, contractAddress);
+    console.log('Contract Deployed:', contractAddress);
   }
 }
